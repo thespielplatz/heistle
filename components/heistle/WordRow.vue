@@ -4,7 +4,10 @@
       v-for="(square, index) in squares"
       :key="index"
       class="aspect-square border-2 flex justify-center items-center text-3xl font-bold"
-      :class="square ? 'border-white' : 'border-gray-400'"
+      :class="[
+        square ? 'border-white' : 'border-gray-400',
+        jiggleActive ? 'animate-jiggle' : ''
+      ]"
     >
       {{ square }}
     </div>
@@ -16,6 +19,7 @@
 import { reactive } from "vue"
 
 const squares = reactive<string[]>(["", "", "", "", ""]);
+const jiggleActive = ref(false)
 
 const add = (char: string) => {
   const index = squares.findIndex((square) => square === "")
@@ -31,9 +35,17 @@ const backspace = () => {
   }
 }
 
+const error = () => {
+  jiggleActive.value = true;
+  setTimeout(() => {
+    jiggleActive.value = false;
+  }, 500)
+}
+
 defineExpose({
   add,
   backspace,
+  error,
 })
 
 </script>

@@ -3,14 +3,18 @@
     <h1 class="font-rubikMonoOne text-metallic-gold text-6xl md:text-8xl text-center">
       Heistle
     </h1>
+    <div>
+      <InfoOverlay ref="infoOverlay" />
+    </div>
     <div class="md:pt-8 md:px-48">
-      <WordRow ref="activeRow"></WordRow>
+      <WordRows ref="wordRows"></WordRows>
     </div>
     <div class="md:pt-5">
       <Keyboard
       :layout="keyboardLayout"
       @keyClick="onKeyClick"
-    />    </div>
+    />    
+    </div>
   </CenterContainer>
 </template>
 
@@ -18,11 +22,12 @@
 
 import { onMounted } from 'vue'
 import CenterContainer from '~/components/layout/CenterContainer.vue'
-import LinkDefault from '~/components/typography/LinkDefault.vue'
-import WordRow from '~/components/heistle/WordRow.vue'
 import Keyboard from '~/components/heistle/Keyboard.vue'
+import WordRows from '~/components/heistle/WordRows.vue'
+import InfoOverlay from '~/components/layout/InfoOverlay.vue'
 
-const activeRow = ref(null)
+const wordRows = ref(null)
+const infoOverlay = ref(null)
 
 const keyboardLayout = ref([
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -36,14 +41,16 @@ onMounted(() => {
 
 const onKeyClick = (key: string) => {
   if (key === 'BACKSPACE') {
-    activeRow.value.backspace()
+    wordRows.value.backspace()
     return
   }
   if (key === 'ENTER') {
+    wordRows.value.error()
+    infoOverlay.value.showMessage('Foo Bar!')
     return
   }
 
-  activeRow.value.add(key)
+  wordRows.value.add(key)
 }
 
 </script>

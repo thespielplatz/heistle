@@ -23,10 +23,17 @@ export default {
         'youtube-jump': 'jump 2s ease-in-out infinite', // 2 seconds for a longer wait
       },
       keyframes: {
-        jump: {
-          '0%, 100%': { transform: 'translateY(-20px)' }, // At the start and end, stay at the bottom
-          '20%, 80%': { transform: 'translateY(0)' }, // Jump higher (60px)
+        jiggle: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '16.66%': { transform: 'translateX(-5px)' },
+          '33.33%': { transform: 'translateX(5px)' },
+          '50%': { transform: 'translateX(-5px)' },
+          '66.66%': { transform: 'translateX(5px)' },
+          '83.33%': { transform: 'translateX(-5px)' },
         },
+      },
+      animation: {
+        jiggle: 'jiggle 0.5s ease',
       },
     },
   },
