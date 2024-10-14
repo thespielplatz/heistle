@@ -3,10 +3,10 @@
     <h1 class="font-rubikMonoOne text-metallic-gold text-6xl md:text-8xl text-center">
       Heistle
     </h1>
-    <div>
-      <InfoOverlay ref="infoOverlay" />
+    <div class=" md:px-48">
+      <Status ref="infoOverlay" />
     </div>
-    <div class="md:pt-8 md:px-48">
+    <div class="md:pt-4 md:px-48">
       <WordRows ref="wordRows"></WordRows>
     </div>
     <div class="md:pt-5">
@@ -24,7 +24,7 @@ import { onMounted } from 'vue'
 import CenterContainer from '~/components/layout/CenterContainer.vue'
 import Keyboard from '~/components/heistle/Keyboard.vue'
 import WordRows from '~/components/heistle/WordRows.vue'
-import InfoOverlay from '~/components/layout/InfoOverlay.vue'
+import Status from '~/components/heistle/Status.vue'
 
 const wordRows = ref(null)
 const infoOverlay = ref(null)

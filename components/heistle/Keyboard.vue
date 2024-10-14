@@ -1,11 +1,11 @@
 <template>
-  <div class="keyboard w-full" ref="keyboardRef" :style="{ width: containerWidth + 'px' }">
+  <div class="w-full" ref="keyboardRef" :style="{ width: containerWidth + 'px' }">
     <div v-for="(row, rowIndex) in layout" :key="rowIndex" class="flex justify-center mb-2">
       <button
         v-for="(char, charIndex) in row"
         :key="charIndex"
         @click="handleClick(char)"
-        class="keyboard-key bg-button-background text-button-text font-bold py-2 px-4 rounded-sm mx-1 hover:bg-gray-400 active:bg-gray-500"
+        class="bg-button-background text-button-text font-bold py-2 px-4 rounded-sm mx-1 hover:bg-gray-400 active:bg-gray-500"
       >
         {{ char }}
       </button>
